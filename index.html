@@ -6,16 +6,32 @@
     <title>Tecur Automobile</title>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   </head>
-  <body style="margin: 0; background-color: #0a0b10;">
+  <body>
     <div id="root"></div>
 
-    <script type="text/babel" data-type="module">
-      import React from 'https://esm.sh/react@18';
-      import ReactDOM from 'https://esm.sh/react-dom@18/client';
-      import App from './App.jsx';
+    <script type="text/babel">
+      // Instead of 'importing', we fetch the text and translate it manually
+      async function launchApp() {
+        try {
+          const response = await fetch('./App.jsx');
+          const rawCode = await response.text();
+          
+          // Translate JSX to JavaScript
+          const translatedCode = Babel.transform(rawCode, { 
+            presets: ['react'] 
+          }).code;
 
-      const root = ReactDOM.createRoot(document.getElementById('root'));
-      root.render(React.createElement(App));
+          // Create a script tag to run the translated code
+          const script = document.createElement('script');
+          script.type = 'module';
+          script.text = translatedCode;
+          document.head.appendChild(script);
+        } catch (err) {
+          console.error("Launch error:", err);
+        }
+      }
+
+      launchApp();
     </script>
   </body>
 </html>
