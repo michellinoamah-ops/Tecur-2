@@ -6,7 +6,7 @@
     <title>Tecur Automobile</title>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   </head>
-  <body style="margin:0; background:#0a0b10;">
+  <body style="margin: 0; background-color: #0a0b10;">
     <div id="root"></div>
 
     <script type="text/babel" data-type="module">
@@ -15,7 +15,7 @@
       import App from './App.jsx';
 
       const root = ReactDOM.createRoot(document.getElementById('root'));
-      root.render(<App />);
+      root.render(React.createElement(App));
     </script>
   </body>
 </html>
