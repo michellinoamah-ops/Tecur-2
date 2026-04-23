@@ -7,7 +7,6 @@
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-    
     <style>
       body { margin: 0; background-color: #0a0b10; font-family: sans-serif; color: white; }
     </style>
@@ -16,7 +15,7 @@
     <div id="root"></div>
 
     <script type="text/babel">
-     import { useState, useEffect, useRef } from "react";
+      /import { useState, useEffect, useRef } from "react";
 
 /* ─── IMAGE ASSETS (embedded) ─── */
 const LOGO_IMG = "data:image/jpeg;base64,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";
@@ -661,21 +660,45 @@ export default function App() {
       <Footer />
     </>
   );
-}
-      
+}/
       const App = () => {
+        const C = {
+          deepBlue: "#1B2D68",
+          charcoal: "#141414",
+          red: "#CC2229",
+          gray: "#6B7280",
+          lightBg: "#F2F4F8",
+          white: "#FFFFFF"
+        };
+
         return (
-          <div style={{ padding: '100px 20px', textAlign: 'center' }}>
-            <h1 style={{ fontSize: '48px', color: '#B2D68F' }}>Tecur Automobile</h1>
-            <p style={{ opacity: 0.7 }}>The Toyota Specialists • Lekki, Lagos</p>
-            <div style={{ marginTop: '40px', padding: '20px', border: '1px solid #1B2D68', borderRadius: '12px' }}>
-               Successfully Loaded!
-            </div>
+          <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+            <nav style={{ padding: '20px', display: 'flex', justifyContent: 'space-between', borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+              <div style={{ fontWeight: 'bold', fontSize: '20px', color: '#B2D68F' }}>TECUR</div>
+              <div style={{ fontSize: '14px', opacity: 0.6 }}>Lekki Peninsula II, Lagos</div>
+            </nav>
+
+            <main style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'center', padding: '40px' }}>
+              <h1 style={{ fontSize: 'clamp(32px, 8vw, 64px)', marginBottom: '16px' }}>The Toyota Specialists</h1>
+              <p style={{ maxWidth: '600px', lineHeight: '1.6', color: 'rgba(210,215,230,0.7)' }}>
+                Premium diagnostic and mechanical services. Experience dealership-level expertise in Lagos.
+              </p>
+              
+              <div style={{ marginTop: '40px', textAlign: 'left', border: '1px solid rgba(255,255,255,0.1)', padding: '20px', borderRadius: '12px' }}>
+                <div style={{ marginBottom: '10px' }}>📍 2 Lawal St, Lekki Peninsula II, Lagos</div>
+                <div style={{ marginBottom: '10px' }}>📞 +234 708 599 0547</div>
+                <div>💬 +234 704 396 6114</div>
+              </div>
+            </main>
+
+            <footer style={{ padding: '20px', textAlign: 'center', fontSize: '12px', opacity: 0.3 }}>
+              © {new Date().getFullYear()} Tecur Automobile. All rights reserved.
+            </footer>
           </div>
         );
       };
 
-      /* ─── LAUNCH THE APP ─── */
+      /* ─── THE LAUNCHER ─── */
       const root = ReactDOM.createRoot(document.getElementById('root'));
       root.render(<App />);
     </script>
