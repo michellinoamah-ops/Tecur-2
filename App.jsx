@@ -644,3 +644,8 @@ export default function App() {
     </>
   );
 }
+import { createRoot } from "https://esm.sh/react-dom@18/client";
+
+const container = document.getElementById('root');
+const root = createRoot(container);
+root.render(<App />); // Replace 'App' with whatever your main component name is
