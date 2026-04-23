@@ -3,19 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tecur 2</title>
+    <title>Tecur Automotive | Genuine Spare Parts</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    
+    <style>
+        body {
+            margin: 0;
+            background-color: #F2F4F8;
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+    </style>
 </head>
 <body>
     <div id="root"></div>
 
     <script type="text/babel" data-type="module">
+        // 1. Import React and DOM from ESM.sh
         import React from 'https://esm.sh/react@18';
         import { createRoot } from 'https://esm.sh/react-dom@18/client';
-        import App from './App.jsx';
+        
+        // 2. Import your main component from your App.jsx file
+        import TecurLanding from './App.jsx';
 
-        const root = createRoot(document.getElementById('root'));
-        root.render(<App />);
+        // 3. Mount the component to the "root" div
+        const container = document.getElementById('root');
+        const root = createRoot(container);
+        root.render(<TecurLanding />);
     </script>
 </body>
 </html>
