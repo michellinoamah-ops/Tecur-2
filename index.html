@@ -5,36 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tecur Automobile</title>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <style>
-      body { margin: 0; padding: 0; background-color: #0a0b10; }
-    </style>
   </head>
-  <body>
+  <body style="margin:0; background:#0a0b10;">
     <div id="root"></div>
 
     <script type="text/babel" data-type="module">
       import React from 'https://esm.sh/react@18';
       import ReactDOM from 'https://esm.sh/react-dom@18/client';
-      
-      async function loadApp() {
-        try {
-          const response = await fetch('./App.jsx');
-          const code = await response.text();
-          const transformedCode = Babel.transform(code, { 
-            presets: ['react'],
-            plugins: [] 
-          }).code;
-          
-          const script = document.createElement('script');
-          script.type = 'module';
-          script.text = transformedCode;
-          document.head.appendChild(script);
-        } catch (err) {
-          console.error("Failed to load App.jsx:", err);
-        }
-      }
+      import App from './App.jsx';
 
-      loadApp();
+      const root = ReactDOM.createRoot(document.getElementById('root'));
+      root.render(<App />);
     </script>
   </body>
 </html>
