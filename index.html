@@ -1,20 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tecur Automobile</title>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="text/babel" data-type="module">
-      import React from 'https://esm.sh/react@18';
-      import ReactDOM from 'https://esm.sh/react-dom@18/client';
-      import App from './App.jsx';
+<div id="root"></div>
 
-      const root = ReactDOM.createRoot(document.getElementById('root'));
-      root.render(React.createElement(App));
-    </script>
-  </body>
-</html>
+<script type="text/babel" data-type="module">
+  import React from 'https://esm.sh/react@18';
+  import ReactDOM from 'https://esm.sh/react-dom@18/client';
+
+  async function loadApp() {
+    try {
+      // 2. Manually fetch the text of your App file
+      const response = await fetch('./App.jsx');
+      const text = await response.text();
+
+      // 3. Use Babel to transform the JSX text into readable JavaScript
+      const transformedCode = Babel.transform(text, {
+        presets: ['react'],
+      }).code;
+
+      // 4. Create a virtual script to run the code
+      const script = document.createElement('script');
+      script.type = 'module';
+      script.text = transformedCode;
+      document.head.appendChild(script);
+    } catch (err) {
+      console.error("Failed to load App.jsx:", err);
+    }
+  }
+
+  loadApp();
+</script>
